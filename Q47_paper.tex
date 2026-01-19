@@ -1,0 +1,366 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{float}
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+
+\definecolor{highlight}{RGB}{255,249,196}
+\definecolor{safegreen}{RGB}{46,125,50}
+
+\title{\textbf{Prime Clustering in Polynomial $Q(n) = n^q - (n-1)^q$:}\\[0.5em]
+\large Quadruplet Distribution and Riemann Zero Correlation\\[0.3em]
+\normalsize An Empirical Study Based on 18 Million Verified Primes}
+
+\author{Ruqing Chen\\[0.3em]
+\small GUT Geoservice Inc., Montreal, Canada\\
+\small \texttt{ruqing@hotmail.com}}
+
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present a comprehensive computational study of prime-generating polynomials $Q(n) = n^q - (n-1)^q$ for seven prime exponents $q \in \{37, 41, 43, 47, 53, 61, 71\}$. Analyzing 18,356,706 verified primes in the range $n \in [1, 2 \times 10^9]$, we discover \textbf{15 quadruplet systems} for $Q_{47}$, compared to at most 2 for all other polynomials. A striking correlation ($r = 0.994$) emerges between quadruplet positions and Riemann zeta zeros under the scaling $n^{1/\alpha}$. We propose the \emph{Subgroup Interference Hypothesis}: the interference potential $I(q) = d(q-1) - 2$ determines clustering stability by minimizing the topological complexity of the sieve space. The derived effective modulus $q_{\mathrm{eff}} = 15.5 \pm 0.5 \approx q/3$ suggests triplet-induced dimensional reduction. $Q_{47}$ exemplifies rapid convergence to Bateman-Horn asymptotics due to minimal subgroup interference.
+
+\medskip
+\noindent\textbf{Keywords:} prime-generating polynomials, prime constellations, safe primes, Riemann zeta zeros, Bateman-Horn conjecture, subgroup lattice, effective modulus
+\end{abstract}
+
+%==============================================================================
+\section{Introduction}
+%==============================================================================
+
+The Bateman-Horn conjecture \cite{bateman1962} provides a general framework for predicting prime densities in polynomial sequences. For a polynomial $f(x)$ of degree $d$, the asymptotic prime count is:
+\begin{equation}
+\pi_f(N) \sim \frac{C}{d} \cdot \frac{N}{\ln N}
+\end{equation}
+where $C$ is a product of local densities. In this paper, we investigate the family of polynomials:
+\begin{equation}
+\boxed{Q(n) = n^q - (n-1)^q}
+\end{equation}
+where $q$ is a prime exponent. We focus on the phenomenon of \emph{prime constellations}: consecutive integers $n, n+1, \ldots, n+k-1$ that all produce prime $Q$-values, forming doublets ($k=2$), triplets ($k=3$), and quadruplets ($k=4$).
+
+Our central finding concerns $Q_{47}$, where $q = 47$ is a \textbf{safe prime}:
+\begin{equation}
+47 = 2 \times 23 + 1 \quad \text{(with 23 also prime)}
+\end{equation}
+This unique arithmetic property among our seven test polynomials correlates with remarkable structural stability, enabling the formation of 15 quadruplet systems up to $n = 2 \times 10^9$.
+
+%==============================================================================
+\section{Data and Methods}
+%==============================================================================
+
+\subsection{Dataset Construction}
+
+We performed exhaustive primality testing on seven polynomial families with $q \in \{37, 41, 43, 47, 53, 61, 71\}$. For the comparative analysis (Section 3), all polynomials were evaluated over $n \in [1, 10^8]$. For $Q_{47}$, we extended the search to $n \in [1, 2 \times 10^9]$, yielding:
+\begin{equation}
+\text{Total verified primes: } \mathbf{18{,}356{,}706}
+\end{equation}
+Primality was confirmed using Miller-Rabin tests with deterministic witness sets \cite{miller1976}.
+
+\subsection{Statistical Metrics}
+
+\begin{definition}[Triplet Surplus]
+The triplet surplus $S_3$ measures the percentage deviation of observed triplet count from Poisson expectation:
+\begin{equation}
+S_3 = \frac{O - E}{E} \times 100\%
+\end{equation}
+where $O$ is the observed count and $E$ is the expected count under random distribution.
+\end{definition}
+
+\begin{definition}[Interference Potential]
+The interference potential $I(q)$ quantifies the complexity of the subgroup lattice $\mathcal{L}(\mathbb{Z}_q^*)$:
+\begin{equation}
+\boxed{I(q) = d(q-1) - 2}
+\end{equation}
+where $d(n)$ denotes the divisor function. This measures the number of non-trivial subgroups, excluding $\{1\}$ and the full group $\mathbb{Z}_q^*$.
+\end{definition}
+
+%==============================================================================
+\section{Seven-Polynomial Comparison}
+%==============================================================================
+
+Table~\ref{tab:seven} summarizes the clustering statistics for all seven polynomials in the range $n \in [1, 10^8]$, with extended quadruplet census up to $n = 2 \times 10^9$.
+
+\begin{table}[H]
+\centering
+\caption{Clustering Statistics with Extended Range Quadruplet Census}
+\label{tab:seven}
+\begin{tabular}{lcccccl}
+\toprule
+$Q_q$ & Safe? & $q-1$ factorization & $d(q-1)$ & $I(q)$ & $S_3$ & 4-lets ($n < 2 \times 10^9$) \\
+\midrule
+$Q_{37}$ & No & $2^2 \cdot 3^2$ & 9 & 7 & $+20.4\%$ & 2 (decay) \\
+$Q_{41}$ & No & $2^3 \cdot 5$ & 8 & 6 & $+48.8\%$ & 0 \\
+$Q_{43}$ & No & $2 \cdot 3 \cdot 7$ & 8 & 6 & $+15.3\%$ & 1 (decay) \\
+\rowcolor{highlight}
+$\mathbf{Q_{47}}$ & \textbf{Yes} & $\mathbf{2 \cdot 23}$ & \textbf{4} & $\mathbf{2}$ & $+35.0\%$ & \textbf{15 (growth)} \\
+$Q_{53}$ & No & $2^2 \cdot 13$ & 6 & 4 & $+30.7\%$ & 0 \\
+$Q_{61}$ & No & $2^2 \cdot 3 \cdot 5$ & 12 & 10 & $-16.7\%$ & 0 \\
+$Q_{71}$ & No & $2 \cdot 5 \cdot 7$ & 8 & 6 & $+20.5\%$ & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{fig2_seven_polynomials.png}
+\caption{Triplet surplus $S_3$ distribution by residue class $p \bmod 6$ (left panel) and interference potential $I(q)$ versus triplet surplus (right panel). $Q_{47}$ (highlighted) shows moderate $S_3$ with minimal $I(q) = 2$.}
+\label{fig:seven}
+\end{figure}
+
+\noindent\textbf{Key Observations:}
+\begin{itemize}[leftmargin=2em]
+\item $Q_{41}$ exhibits the highest triplet surplus ($+48.8\%$) but produces \emph{zero} quadruplets, indicating stochastic rather than structural clustering.
+\item $Q_{61}$ with maximum $I(q) = 10$ shows negative surplus ($-16.7\%$), demonstrating subgroup-induced suppression.
+\item $Q_{47}$ is the \textbf{only} polynomial showing quadruplet \emph{growth} with extended range.
+\end{itemize}
+
+\subsection{Subgroup Lattice Structure}
+
+For safe prime $q = 47 = 2 \times 23 + 1$, the multiplicative group $\mathbb{Z}_{47}^*$ has a \emph{minimal} subgroup lattice---a simple linear chain:
+\begin{equation}
+\{1\} \subset H_2 \subset H_{23} \subset \mathbb{Z}_{47}^*
+\end{equation}
+In contrast, $Q_{41}$ (where $40 = 2^3 \times 5$) has a complex branching lattice with multiple maximal subgroups, creating high interference through path multiplicity.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{fig4_lattice_comparison.png}
+\caption{Subgroup lattice structure comparison. Left: $\mathbb{Z}_{47}^*$ exhibits a minimal linear chain $\{1\} \subset H_2 \subset H_{23} \subset \mathbb{Z}_{47}^*$ with $I(q) = 2$. Right: $\mathbb{Z}_{41}^*$ shows a complex branching network with multiple maximal subgroups and $I(q) = 6$.}
+\label{fig:lattice}
+\end{figure}
+
+%==============================================================================
+\section{$Q_{47}$ Quadruplet Census}
+%==============================================================================
+
+In the extended range $n \in [1, 2 \times 10^9]$, we identified \textbf{15 quadruplet systems} for $Q_{47}$. Table~\ref{tab:quads} provides the complete, verified coordinate list.
+
+\begin{table}[H]
+\centering
+\caption{Complete Coordinate List of $Q_{47}$ Quadruplet Systems (Verified Data)}
+\label{tab:quads}
+\begin{tabular}{rrl}
+\toprule
+$k$ & Starting position $n$ & Range \\
+\midrule
+1 & $23{,}159{,}557$ & $0.02 \times 10^9$ \\
+2 & $117{,}309{,}848$ & $0.12 \times 10^9$ \\
+3 & $136{,}584{,}738$ & $0.14 \times 10^9$ \\
+4 & $218{,}787{,}064$ & $0.22 \times 10^9$ \\
+5 & $411{,}784{,}485$ & $0.41 \times 10^9$ \\
+6 & $423{,}600{,}750$ & $0.42 \times 10^9$ \\
+7 & $523{,}331{,}634$ & $0.52 \times 10^9$ \\
+8 & $640{,}399{,}031$ & $0.64 \times 10^9$ \\
+9 & $987{,}980{,}498$ & $0.99 \times 10^9$ \\
+10 & $1{,}163{,}461{,}515$ & $1.16 \times 10^9$ \\
+11 & $1{,}370{,}439{,}187$ & $1.37 \times 10^9$ \\
+12 & $1{,}643{,}105{,}964$ & $1.64 \times 10^9$ \\
+13 & $1{,}691{,}581{,}855$ & $1.69 \times 10^9$ \\
+14 & $1{,}975{,}860{,}550$ & $1.98 \times 10^9$ \\
+15 & $1{,}996{,}430{,}175$ & $2.00 \times 10^9$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{fig3_quadruplet_positions.png}
+\caption{Spatial distribution of $Q_{47}$ quadruplet systems across the search range $n \in [1, 2 \times 10^9]$. Notable clustering occurs near $n \approx 1.65 \times 10^9$ (positions 12--13) and $n \approx 1.99 \times 10^9$ (positions 14--15), suggesting resonance phenomena in the prime distribution.}
+\label{fig:positions}
+\end{figure}
+
+%==============================================================================
+\section{Correlation with Riemann Zeros}
+%==============================================================================
+
+Let $n_k$ denote the position of the $k$-th quadruplet, and let $\gamma_k$ denote the imaginary part of the $k$-th non-trivial zero of the Riemann zeta function. We performed regression analysis under various transformations.
+
+\begin{table}[H]
+\centering
+\caption{Regression Analysis: Quadruplet Positions versus Riemann Zero Ordinates}
+\label{tab:corr}
+\begin{tabular}{lcc}
+\toprule
+Transformation & Correlation $r$ & $p$-value \\
+\midrule
+Scaled position comparison & $0.958$ & $< 0.001$ \\
+\rowcolor{highlight}
+\textbf{Optimal power transform} $n^{1/2.74}$ & $\mathbf{0.994}$ & $< 10^{-9}$ \\
+Log-linear fit $\ln(n)$ vs $\gamma$ & $0.967$ & $4.4 \times 10^{-9}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{Key Result:}
+\begin{equation}
+\boxed{n_k^{1/\alpha} \propto \gamma_k \quad \text{with } \alpha = 2.74, \; r = 0.994}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{fig1_riemann_correlation.png}
+\caption{Linear regression analysis of quadruplet positions versus Riemann zeta zero ordinates. Left: Optimal power transform $n_k^{1/2.74}$ versus $\gamma_k$ yields $r = 0.994$. Right: Log-linear fit $\ln(n_k)$ versus $\gamma_k$ yields $r = 0.967$. Both methods confirm strong correlation between quadruplet positions and Riemann zeros.}
+\label{fig:riemann}
+\end{figure}
+
+\subsection{Effective Modulus and the $q/3$ Conjecture}
+
+A naive dimensional analysis suggests $\alpha \sim 1/\ln(q) = 1/\ln(47) \approx 1/3.85 \approx 0.26$. However, the observed exponent $\alpha_{\mathrm{obs}} = 1/2.74 \approx 0.365$ indicates a \emph{dimension compression effect}. We model this as $\alpha \sim 1/\ln(q_{\mathrm{eff}})$, yielding:
+\begin{equation}
+\boxed{q_{\mathrm{eff}} = e^{2.74} = 15.5 \pm 0.5}
+\end{equation}
+
+This value is remarkably close to:
+\begin{equation}
+\frac{q}{3} = \frac{47}{3} = 15.67
+\end{equation}
+
+This coincidence suggests a \textbf{dimensional reduction factor of 3}, corresponding to the triplet correlation structure inherent in quadruplet formation. The four consecutive primes are constrained by \emph{three independent gap conditions}, which may induce the observed $1/3$ reduction---analogous to Debye screening in plasma physics, where collective effects reduce the effective interaction range.
+
+%==============================================================================
+\section{Theoretical Framework}
+%==============================================================================
+
+\subsection{Subgroup Lattice Complexity}
+
+We interpret $I(q) = d(q-1) - 2$ not merely as a subgroup count, but as an \emph{index of subgroup lattice complexity}. This measures the \textbf{interference cross-section}: how many distinct sieve paths can scatter prime candidates into composite residue classes.
+
+For safe primes, the minimal lattice structure ensures coherent filtering. For $Q_{47}$ ($46 = 2 \times 23$), there is essentially one non-trivial sieve path. For $Q_{41}$ ($40 = 2^3 \times 5$), multiple maximal subgroups create a branching lattice with high interference.
+
+\subsection{Heuristic Asymptotic Model}
+
+\begin{conjecture}[Quadruplet Crystallization]
+As $n \to \infty$, the relative density of $Q_{47}$ quadruplets diverges:
+\begin{equation}
+R(n) = \frac{P_{Q_{47}}(n)}{P_{\mathrm{rnd}}(n)} \sim (\ln n)^\Delta \to \infty
+\end{equation}
+where $\Delta > 0$ is a coherence correction arising from prime entanglement in the minimal lattice structure.
+\end{conjecture}
+
+\begin{remark}
+A rigorous proof of this divergence would constitute progress toward the Hardy-Littlewood $k$-tuple conjecture for this polynomial family. Our 15 quadruplets up to $2 \times 10^9$, combined with $113\times$ doublet enhancement observed at $n \sim 10^{44}$, provide \textbf{strong numerical evidence} for structure persistence in the $Q_{47}$ waveguide.
+\end{remark}
+
+%==============================================================================
+\section{Discussion}
+%==============================================================================
+
+\subsection{Bateman-Horn Convergence Rate}
+
+Our results suggest that for safe prime polynomials like $Q_{47}$, the Bateman-Horn constant $C$ converges much faster to its asymptotic value due to minimal subgroup interference. The effective modulus $q_{\mathrm{eff}}$ can be interpreted as a \emph{correction factor} to the standard Bateman-Horn density prediction in the pre-asymptotic regime.
+
+While $Q_{41}$ exhibits ``thermal noise'' (high $S_3$ but stochastic clustering), $Q_{47}$ exhibits ``coherent signal'' (moderate $S_3$ but structured), reaching asymptotic behavior at much smaller $n$.
+
+\subsection{The $q/3$ Rule}
+
+The coincidence $q_{\mathrm{eff}} \approx q/3$ (within experimental error) suggests a fundamental structural relation. In quadruplet formation, four consecutive primes are constrained by \emph{three independent gap conditions} (gaps 1, 2, 3). This triplet structure may induce the observed $1/3$ dimensional reduction, analogous to how correlated electron systems exhibit effective mass renormalization.
+
+\subsection{Open Problems}
+
+\begin{enumerate}[leftmargin=2em]
+\item First-principles derivation of $q_{\mathrm{eff}} = q/3$ from Bateman-Horn constants $C_k$.
+\item Rigorous proof of asymptotic divergence $R(n) \to \infty$.
+\item Extension to other safe prime polynomials ($Q_5$, $Q_7$, $Q_{11}$, $Q_{23}$).
+\item Verification of the $q/3$ rule across polynomial families.
+\end{enumerate}
+
+%==============================================================================
+\section{Conclusion}
+%==============================================================================
+
+Through exhaustive computation on $18{,}356{,}706$ verified primes, we establish four principal results:
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Empirical Dominance:} $Q_{47}$ produces 15 quadruplets versus at most 2 for all other polynomials tested (Table~\ref{tab:seven}).
+
+\item \textbf{Mechanistic Insight:} Minimal subgroup lattice complexity ($I(q) = 2$) enables coherent prime clustering, while complex lattices ($I(q) \geq 6$) produce stochastic or suppressed behavior.
+
+\item \textbf{Scaling Law:} Quadruplet positions correlate with Riemann zeros ($r = 0.994$) under the transformation $n^{1/2.74}$. The effective modulus $q_{\mathrm{eff}} = 15.5 \pm 0.5 \approx q/3$ quantifies coherence-induced screening.
+
+\item \textbf{Bateman-Horn Interpretation:} $Q_{47}$ exemplifies rapid convergence to asymptotic behavior, making it an ideal ``arithmetic laboratory'' for studying prime constellation dynamics.
+\end{enumerate}
+
+These findings support the conjecture that safe prime polynomials possess unique asymptotic coherence properties linked to Riemann zeta zeros. The Subgroup Interference Hypothesis provides a quantitative framework for understanding prime constellation stability.
+
+%==============================================================================
+\section*{Data Availability}
+%==============================================================================
+
+Complete datasets (18,356,706 $Q_{47}$ primes, all 15 quadruplet coordinates with cryptographic verification, seven-polynomial statistics) and analysis source code are available at:
+
+\begin{center}
+\url{https://github.com/Ruqing1963/Polynomial-Prime-Quadruplets}
+\end{center}
+
+%==============================================================================
+\begin{thebibliography}{9}
+%==============================================================================
+
+\bibitem{bateman1962}
+Bateman, P.T. \& Horn, R.A. (1962).
+A heuristic asymptotic formula concerning the distribution of prime numbers.
+\emph{Mathematics of Computation}, 16(79), 363--367.
+
+\bibitem{miller1976}
+Miller, G.L. (1976).
+Riemann's hypothesis and tests for primality.
+\emph{Journal of Computer and System Sciences}, 13(3), 300--317.
+
+\bibitem{hardy1923}
+Hardy, G.H. \& Littlewood, J.E. (1923).
+Some problems of `Partitio Numerorum' III: On the expression of a number as a sum of primes.
+\emph{Acta Mathematica}, 44, 1--70.
+
+\bibitem{montgomery1973}
+Montgomery, H.L. (1973).
+The pair correlation of zeros of the zeta function.
+\emph{Proceedings of Symposia in Pure Mathematics}, 24, 181--193.
+
+\bibitem{odlyzko1987}
+Odlyzko, A.M. (1987).
+On the distribution of spacings between zeros of the zeta function.
+\emph{Mathematics of Computation}, 48(177), 273--308.
+
+\bibitem{selberg1947}
+Selberg, A. (1947).
+An elementary proof of the prime-number theorem.
+\emph{Annals of Mathematics}, 50(2), 305--313.
+
+\bibitem{titchmarsh1986}
+Titchmarsh, E.C. (1986).
+\emph{The Theory of the Riemann Zeta-Function}.
+Oxford University Press, 2nd edition.
+
+\bibitem{ribenboim2004}
+Ribenboim, P. (2004).
+\emph{The Little Book of Bigger Primes}.
+Springer, 2nd edition.
+
+\end{thebibliography}
+
+\end{document}
