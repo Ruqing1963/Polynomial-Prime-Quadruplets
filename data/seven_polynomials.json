@@ -1,0 +1,102 @@
+{
+  "title": "Seven Polynomial Comparison Dataset",
+  "range": "n ∈ [1, 10^8]",
+  "verification_date": "2026-01-19",
+  "author": "Ruqing Chen",
+  
+  "polynomials": [
+    {
+      "name": "Q37",
+      "q": 37,
+      "is_safe_prime": false,
+      "q_minus_1_factorization": "2^2 × 3^2",
+      "divisor_count_d": 9,
+      "interference_potential_I": 7,
+      "triplet_surplus_S3": 20.4,
+      "quadruplets_100M": 2,
+      "quadruplets_2B": 2,
+      "trend": "decay"
+    },
+    {
+      "name": "Q41",
+      "q": 41,
+      "is_safe_prime": false,
+      "q_minus_1_factorization": "2^3 × 5",
+      "divisor_count_d": 8,
+      "interference_potential_I": 6,
+      "triplet_surplus_S3": 48.8,
+      "quadruplets_100M": 0,
+      "quadruplets_2B": 0,
+      "trend": "stochastic"
+    },
+    {
+      "name": "Q43",
+      "q": 43,
+      "is_safe_prime": false,
+      "q_minus_1_factorization": "2 × 3 × 7",
+      "divisor_count_d": 8,
+      "interference_potential_I": 6,
+      "triplet_surplus_S3": 15.3,
+      "quadruplets_100M": 1,
+      "quadruplets_2B": 1,
+      "trend": "decay"
+    },
+    {
+      "name": "Q47",
+      "q": 47,
+      "is_safe_prime": true,
+      "sophie_germain_prime": 23,
+      "q_minus_1_factorization": "2 × 23",
+      "divisor_count_d": 4,
+      "interference_potential_I": 2,
+      "triplet_surplus_S3": 35.0,
+      "quadruplets_100M": 1,
+      "quadruplets_2B": 15,
+      "trend": "growth",
+      "note": "UNIQUE: only polynomial showing quadruplet growth"
+    },
+    {
+      "name": "Q53",
+      "q": 53,
+      "is_safe_prime": false,
+      "q_minus_1_factorization": "2^2 × 13",
+      "divisor_count_d": 6,
+      "interference_potential_I": 4,
+      "triplet_surplus_S3": 30.7,
+      "quadruplets_100M": 0,
+      "quadruplets_2B": 0,
+      "trend": "suppressed"
+    },
+    {
+      "name": "Q61",
+      "q": 61,
+      "is_safe_prime": false,
+      "q_minus_1_factorization": "2^2 × 3 × 5",
+      "divisor_count_d": 12,
+      "interference_potential_I": 10,
+      "triplet_surplus_S3": -16.7,
+      "quadruplets_100M": 0,
+      "quadruplets_2B": 0,
+      "trend": "suppressed",
+      "note": "highest I(q), negative surplus"
+    },
+    {
+      "name": "Q71",
+      "q": 71,
+      "is_safe_prime": false,
+      "q_minus_1_factorization": "2 × 5 × 7",
+      "divisor_count_d": 8,
+      "interference_potential_I": 6,
+      "triplet_surplus_S3": 20.5,
+      "quadruplets_100M": 0,
+      "quadruplets_2B": 0,
+      "trend": "suppressed"
+    }
+  ],
+  
+  "key_findings": {
+    "safe_prime_uniqueness": "Q47 is the ONLY safe prime among tested polynomials",
+    "minimum_interference": "Q47 has I(q)=2, the minimum possible for odd prime q>3",
+    "structural_coherence": "Only Q47 shows quadruplet growth with extended range"
+  }
+}
