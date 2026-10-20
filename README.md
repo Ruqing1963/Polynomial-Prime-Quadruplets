@@ -3,10 +3,28 @@
 **Prime Clustering in Polynomial Q(n) = n^q - (n-1)^q: Quadruplet Distribution and Riemann Zero Correlation**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23517573-blue.svg)](https://doi.org/10.5281/zenodo.23517573)
+
+## 🆕 Version 2 (October 2026)
+
+**A 200,000-digit Q47 probable prime:**
+
+```
+Q47(586135293385*10^4336 + 1647) = (586135293385*10^4336+1647)^47 - (586135293385*10^4336+1646)^47
+```
+
+* Exactly 200,000 digits (664,383 bits); 3-, 5-, 7- and 11-PRP (PFGW 4.1.7 / GWNUM 31.4)
+* Found by a cyclotomic sieve (prime factors ≡ 1 mod 94, 46 classes per prime) over 150,000 values of n, sieved to 2×10^10
+* The discovery rate matches Bateman–Horn. This is a PRP, not a proven prime.
+* Details, logs and the search script are in [`prp200k/`](prp200k/). The paper is [`paper/Q47_paper_v2.pdf`](paper/Q47_paper_v2.pdf), Section 7.
+
+Other changes in v2:
+* **Correction:** the subgroup lattice of Z*₄₇ is a diamond {1} ⊂ H₂, H₂₃ ⊂ Z*₄₇, not a chain (H₂ ⊄ H₂₃ since 2 ∤ 23). I(47) = 2 is unchanged.
+* **Calibration:** against a null model of 15 randomly placed, sorted positions, r ≥ 0.994 occurs about 4.7% of the time (median 0.985), so the Riemann-zero correlation is marginal (P ≈ 0.05). See Remark 1 of v2.
 
 ## 🔬 Key Discovery
 
-We discovered **15 quadruplet systems** (four consecutive prime-generating integers) for polynomial Q₄₇, where 47 is a **safe prime**. A remarkable correlation (**r = 0.994**) exists between quadruplet positions and Riemann zeta zeros.
+We discovered **15 quadruplet systems** (four consecutive prime-generating integers) for polynomial Q₄₇, where 47 is a **safe prime**. A correlation (**r = 0.994**) exists between quadruplet positions and Riemann zeta zeros (see the v2 null-model calibration above).
 
 ### Core Formula
 
@@ -77,11 +95,15 @@ This suggests a **triplet-induced dimensional reduction** in the sieve space.
 │   └── fig4_lattice_comparison.pdf
 ├── scripts/
 │   ├── analyze_quadruplets.py    # Correlation analysis
-│   └── plot_figures.py           # Figure generation
+│   ├── plot_figures.py           # Figure generation
+│   └── plot_lattice_v2.py        # Corrected subgroup-lattice figure (v2)
 ├── paper/
-│   ├── Q47_paper.tex             # LaTeX source
-│   ├── Q47_paper.pdf             # Compiled paper
-│   └── Q47_Paper_Final_v5.pdf    # Full paper with figures
+│   ├── Q47_paper.tex             # v1 LaTeX source
+│   ├── Q47_paper.pdf             # v1 compiled paper
+│   ├── Q47_paper_v2.tex          # v2 LaTeX source
+│   ├── Q47_paper_v2.pdf          # v2 compiled paper
+│   └── fig*.png                  # v2 figures
+├── prp200k/                      # 200,000-digit PRP: search script, sieve state, PFGW logs
 └── README.md
 ```
 
@@ -93,7 +115,7 @@ This suggests a **triplet-induced dimensional reduction** in the sieve space.
 
 The interference potential **I(q) = d(q-1) - 2** measures subgroup lattice complexity:
 
-- **Q₄₇:** Linear chain {1} → H₂ → H₂₃ → Z*₄₇ (minimal interference)
+- **Q₄₇:** Minimal diamond {1} ⊂ H₂, H₂₃ ⊂ Z*₄₇ (minimal interference)
 - **Q₄₁:** Branching network (high interference)
 
 ### Asymptotic Conjecture
@@ -110,9 +132,11 @@ R(n) = P_Q47(n) / P_rnd(n) ~ (ln n)^Δ → ∞
 
 ```bibtex
 @article{chen2026polynomial,
-  title={Prime Clustering in Polynomial Q(n)=n^q-(n-1)^q: Quadruplet Distribution and Riemann Zero Correlation},
+  title={Prime Clustering in Polynomial Q(n)=n^q-(n-1)^q: Quadruplet Distribution, Riemann Zero Correlation, and a 200,000-Digit Q47 Probable Prime},
   author={Chen, Ruqing},
   year={2026},
+  note={Version 2},
+  doi={10.5281/zenodo.23517573},
   institution={GUT Geoservice Inc., Montreal}
 }
 ```
