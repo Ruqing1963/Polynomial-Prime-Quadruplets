@@ -44,6 +44,14 @@ Screenshots of the base 3, 5 and 7 runs are in `screenshots/`. `gmp_verify.py` p
 
 `pfgw_logs/` has the PRP hit log and the composite results (with RES64 residues) for each slice.
 
+## Remaining candidates
+
+`remaining/work_XX_candidates.txt` lists the 27,575 candidates still untested on 2026-10-20, in PFGW ABC format. Tested candidates were deleted daily, so 30,809 − 27,575 = 3,234 had been tested by then. The files are the 8 equal slices of the sieve output, each with its tested head removed. `remaining/work_XX_pfgw.ini` are the PFGW checkpoints at that time. To continue one slice:
+
+```
+pfgw64 -f0 -l"pfgw_out.txt" work_00_candidates.txt
+```
+
 ## Reproduce
 
 ```

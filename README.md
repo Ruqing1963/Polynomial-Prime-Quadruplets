@@ -103,7 +103,8 @@ This suggests a **triplet-induced dimensional reduction** in the sieve space.
 │   ├── Q47_paper_v2.tex          # v2 LaTeX source
 │   ├── Q47_paper_v2.pdf          # v2 compiled paper
 │   └── fig*.png                  # v2 figures
-├── prp200k/                      # 200,000-digit PRP: search script, sieve state, PFGW logs
+├── prp200k/                      # 200,000-digit PRP: search script, sieve state, PFGW logs,
+│                                 #   remaining/ = untested candidates + PFGW checkpoints
 └── README.md
 ```
 
