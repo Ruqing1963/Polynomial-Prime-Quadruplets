@@ -1,166 +1,106 @@
 # Polynomial Prime Quadruplets
 
-**Prime Clustering in Polynomial Q(n) = n^q - (n-1)^q: Quadruplet Distribution and Riemann Zero Correlation**
+**Prime Constellations of Q(n) = n^q − (n−1)^q: A Bateman–Horn Census to 8×10¹¹, Certified 1000-Digit Quadruplets, and a 200,000-Digit Q47 Probable Prime**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23517573-blue.svg)](https://doi.org/10.5281/zenodo.23517573)
 
-## 🆕 Version 2 (October 2026)
+Paper: [`paper/Q47_paper_v2.pdf`](paper/Q47_paper_v2.pdf) (Version 2, October 2026).
 
-**A 200,000-digit Q47 probable prime:**
+## Summary of Version 2
 
-```
-Q47(586135293385*10^4336 + 1647) = (586135293385*10^4336+1647)^47 - (586135293385*10^4336+1646)^47
-```
+Q_q(n) = n^q − (n−1)^q is the degree-(q−1) analogue of the cuban primes (q = 3). Every prime factor of Q_q(n) is ≡ 1 (mod 2q). Version 2 tests the Bateman–Horn conjecture on the prime values and prime k-tuples Q(n), Q(n+1), …, Q(n+k−1). It finds agreement at every scale tested.
 
-* Exactly 200,000 digits (664,383 bits); 3-, 5-, 7- and 11-PRP (PFGW 4.1.7 / GWNUM 31.4)
-* Found by a cyclotomic sieve (prime factors ≡ 1 mod 94, 46 classes per prime) over 150,000 values of n, sieved to 2×10^10
-* The discovery rate matches Bateman–Horn. This is a PRP, not a proven prime.
-* Details, logs and the search script are in [`prp200k/`](prp200k/). The paper is [`paper/Q47_paper_v2.pdf`](paper/Q47_paper_v2.pdf), Section 7.
+| Q47 data set | Observed | Bateman–Horn |
+|---|---|---|
+| Primes, n ≤ 2×10⁹ | 18,473,624 | 18,464,550 |
+| Doublets / triplets, n ≤ 2×10⁹ | 176,896 / 1,779 | 176,780 / 1,752 |
+| Quadruplets, n < 8×10¹¹ (each BPSW-verified) | 2,393 | 2,404.3 |
+| Quintuplets, n < 8×10¹¹ | 21 | 17.9 |
+| Sextuplets, n < 8×10¹¹ | 0 | 0.14 |
+| Primes in 10⁴⁴ < n ≤ 10⁴⁴+10⁶ (2026 digits; independently rescanned) | 1,870 | 1,861.6 |
+| Primes in 10⁷ consecutive n near 1.004×10⁴⁴ (independently rescanned) | 18,715 | 18,614 |
 
-Other changes in v2:
-* **Correction:** the subgroup lattice of Z*₄₇ is a diamond {1} ⊂ H₂, H₂₃ ⊂ Z*₄₇, not a chain (H₂ ⊄ H₂₃ since 2 ∤ 23). I(47) = 2 is unchanged.
-* **Calibration:** against a null model of 15 randomly placed, sorted positions, r ≥ 0.994 occurs about 4.7% of the time (median 0.985), so the Riemann-zero correlation is marginal (P ≈ 0.05). See Remark 1 of v2.
+* **The C₄ constants explain the differences between exponents.** The constants C_k(q) were computed for ten exponents, k ≤ 6. The quadruplet constant C₄(q) depends mainly on the smallest prime p ≡ 1 (mod q). When 2q+1 is prime (q = 23, 29, 41, 53), C₄ drops by an order of magnitude. Whether q is a safe prime plays no role.
+* **Correction of Version 1.** A complete recount of quadruplets with n ≤ 2×10⁹ for seven exponents finds
+  * 37: 23
+  * 41: 3
+  * 43: 10
+  * 47: 15
+  * 53: 2
+  * 61: 4
+  * 71: 6
 
-## 🔬 Key Discovery
+  Version 1 reported 2, 0, 1, 15, 0, 0, 0. Every recount agrees with Bateman–Horn (|z| < 1.2). The apparent Q47 anomaly in Version 1 came from incomplete counts for the other exponents.
+* **Control search.** For eight exponents (n ≤ 10⁷) the counts of primes, doublets and triplets match Bateman–Horn. The two safe primes (23, 59) show no surplus.
+* **Riemann zeros.** After detrending both sequences, the correlation between quadruplet positions and Riemann zeros is r = −0.0003 (permutation p = 0.999). The earlier r = 0.994 came from the shared growth trend. The q_eff = q/3 rule is withdrawn.
+* **1000-digit quadruplets.** There are 11 quadruplets near n ≈ 4.8×10²¹. Eight of them have all four primes certified by ECPP (Primo); see [`certificates/`](certificates/).
+* **200,000-digit probable prime.**
 
-We discovered **15 quadruplet systems** (four consecutive prime-generating integers) for polynomial Q₄₇, where 47 is a **safe prime**. A correlation (**r = 0.994**) exists between quadruplet positions and Riemann zeta zeros (see the v2 null-model calibration above).
+  ```
+  P* = Q47(586135293385*10^4336 + 1647)
+  ```
 
-### Core Formula
+  It is exactly 200,000 digits long. It passes Fermat tests to bases 3, 5, 7 and 11 (PFGW), and strong base-11 and BPSW tests (GMP). It is a probable prime, not a proven prime. See [`prp200k/`](prp200k/).
+* **Lattice correction.** The subgroup lattice of (Z/47Z)* is a diamond, not a chain.
 
-```
-n_k^(1/2.74) ∝ γ_k    where r = 0.994
-```
+## Q47 quadruplets with n ≤ 2×10⁹
 
-### Effective Modulus
+| k | n | k | n | k | n |
+|---|---|---|---|---|---|
+| 1 | 23,159,557 | 6 | 423,600,750 | 11 | 1,370,439,187 |
+| 2 | 117,309,848 | 7 | 523,331,634 | 12 | 1,643,105,964 |
+| 3 | 136,584,738 | 8 | 640,399,031 | 13 | 1,691,581,855 |
+| 4 | 218,787,064 | 9 | 987,980,498 | 14 | 1,975,860,550 |
+| 5 | 411,784,485 | 10 | 1,163,461,515 | 15 | 1,996,430,175 |
 
-```
-q_eff = e^2.74 = 15.5 ± 0.5 ≈ q/3 = 15.67
-```
+All 2,393 starts below 8×10¹¹ are in [`data/quadruplets_Q47_lt_8e11.csv`](data/quadruplets_Q47_lt_8e11.csv) (also `.json`).
 
-This suggests a **triplet-induced dimensional reduction** in the sieve space.
-
----
-
-## 📊 Q47 Quadruplet Coordinates (Verified)
-
-| k  | Starting Position n | Range  |
-|----|---------------------|--------|
-| 1  | 23,159,557          | 0.02B  |
-| 2  | 117,309,848         | 0.12B  |
-| 3  | 136,584,738         | 0.14B  |
-| 4  | 218,787,064         | 0.22B  |
-| 5  | 411,784,485         | 0.41B  |
-| 6  | 423,600,750         | 0.42B  |
-| 7  | 523,331,634         | 0.52B  |
-| 8  | 640,399,031         | 0.64B  |
-| 9  | 987,980,498         | 0.99B  |
-| 10 | 1,163,461,515       | 1.16B  |
-| 11 | 1,370,439,187       | 1.37B  |
-| 12 | 1,643,105,964       | 1.64B  |
-| 13 | 1,691,581,855       | 1.69B  |
-| 14 | 1,975,860,550       | 1.98B  |
-| 15 | 1,996,430,175       | 2.00B  |
-
----
-
-## 📈 Seven-Polynomial Comparison
-
-| Q_q | Safe Prime | I(q) | S₃      | Quadruplets (n<2B) |
-|-----|------------|------|---------|-------------------|
-| Q₃₇ | No         | 7    | +20.4%  | 2 (decay)         |
-| Q₄₁ | No         | 6    | +48.8%  | 0                 |
-| Q₄₃ | No         | 6    | +15.3%  | 1 (decay)         |
-| **Q₄₇** | **Yes** | **2** | +35.0% | **15 (growth)** |
-| Q₅₃ | No         | 4    | +30.7%  | 0                 |
-| Q₆₁ | No         | 10   | -16.7%  | 0                 |
-| Q₇₁ | No         | 6    | +20.5%  | 0                 |
-
-**Key Finding:** Q₄₇ is the ONLY polynomial showing quadruplet growth with extended range.
-
----
-
-## 📁 Repository Structure
+## Repository structure
 
 ```
-├── data/
-│   ├── quadruplets_Q47.json      # Complete quadruplet coordinates
-│   ├── quadruplets_Q47.csv       # CSV format with Riemann comparison
-│   ├── seven_polynomials.json    # Seven-polynomial statistics
-│   └── riemann_zeros_first15.csv # Riemann zeta zeros
-├── figures/
-│   ├── fig1_riemann_correlation.pdf
-│   ├── fig2_seven_polynomials.pdf
-│   ├── fig3_quadruplet_positions.pdf
-│   └── fig4_lattice_comparison.pdf
-├── scripts/
-│   ├── analyze_quadruplets.py    # Correlation analysis
-│   ├── plot_figures.py           # Figure generation
-│   └── plot_lattice_v2.py        # Corrected subgroup-lattice figure (v2)
 ├── paper/
-│   ├── Q47_paper.tex             # v1 LaTeX source
-│   ├── Q47_paper.pdf             # v1 compiled paper
-│   ├── Q47_paper_v2.tex          # v2 LaTeX source
-│   ├── Q47_paper_v2.pdf          # v2 compiled paper
-│   └── fig*.png                  # v2 figures
-├── prp200k/                      # 200,000-digit PRP: search script, sieve state, PFGW logs,
-│                                 #   remaining/ = untested candidates + PFGW checkpoints
+│   ├── Q47_paper_v2.tex / .pdf     # Version 2 (current)
+│   ├── Q47_paper.tex / .pdf        # Version 1 (superseded)
+│   └── fig*.png                    # figures
+├── analysis/                       # Version 2 programs and results (Python 3, numpy, gmpy2)
+│   ├── bh_constants.py             # Bateman–Horn constants C_k(q) -> bh_constants*.json
+│   ├── quad_census.py              # segmented-sieve quadruplet census (q = 37, 41, 43, 47)
+│   ├── patch_titan_gaps.py         # block-boundary patch + BPSW for q = 53, 61, 71
+│   ├── control_search.py           # primes / k-tuples for eight exponents, n ≤ 10^7
+│   ├── count_primes_2e9.py         # Q47 prime count n ≤ 2e9 from the search files
+│   ├── patch_prime_gaps.py         # re-test of data gaps (adds 53 missed primes)
+│   ├── rescan_window.py            # independent rescan of the 10^44 windows (sieve + PFGW + BPSW)
+│   ├── verify_all_quads.py         # BPSW check of all 2,393 quadruplets
+│   ├── verify_tuples.py            # quintuplets and large windows
+│   ├── residual_test.py            # detrended Riemann-zero test
+│   └── make_figures_v2.py          # figures
+├── certificates/primo_1000digit/   # Primo ECPP inputs (.in) and certificates (.out)
+├── prp200k/                        # 200,000-digit PRP: search, sieve state, logs, remaining candidates
+├── data/quadruplets_Q47_lt_8e11.*  # all 2,393 Q47 quadruplet starts n < 8e11
+├── data/, figures/, scripts/       # other files: Version 1 material
 └── README.md
 ```
 
----
-
-## 🧮 Theoretical Framework
-
-### Subgroup Interference Hypothesis
-
-The interference potential **I(q) = d(q-1) - 2** measures subgroup lattice complexity:
-
-- **Q₄₇:** Minimal diamond {1} ⊂ H₂, H₂₃ ⊂ Z*₄₇ (minimal interference)
-- **Q₄₁:** Branching network (high interference)
-
-### Asymptotic Conjecture
-
-The relative quadruplet density **R(n) → ∞** as n → ∞:
-
-```
-R(n) = P_Q47(n) / P_rnd(n) ~ (ln n)^Δ → ∞
-```
-
----
-
-## 📚 Citation
+## Citation
 
 ```bibtex
-@article{chen2026polynomial,
-  title={Prime Clustering in Polynomial Q(n)=n^q-(n-1)^q: Quadruplet Distribution, Riemann Zero Correlation, and a 200,000-Digit Q47 Probable Prime},
-  author={Chen, Ruqing},
-  year={2026},
-  note={Version 2},
-  doi={10.5281/zenodo.23517573},
-  institution={GUT Geoservice Inc., Montreal}
+@misc{chen2026q47v2,
+  title  = {Prime Constellations of $Q(n)=n^q-(n-1)^q$: A Bateman--Horn Census to $8\times10^{11}$,
+            Certified 1000-Digit Quadruplets, and a 200,000-Digit $Q_{47}$ Probable Prime},
+  author = {Chen, Ruqing},
+  year   = {2026},
+  note   = {Version 2},
+  doi    = {10.5281/zenodo.23517573}
 }
 ```
 
----
+Earlier work on Q47: Zenodo DOIs 10.5281/zenodo.18526470, 18701355, 18728540, 20753750, 22177596.
 
-## 📧 Contact
+## Contact
 
-**Ruqing Chen**  
-GUT Geoservice Inc., Montreal, Canada  
-Email: ruqing@hotmail.com
+**Ruqing Chen**, GUT Geoservice Inc., Montreal, Canada. Email: ruqing@hotmail.com
 
----
+## License
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🔗 References
-
-1. Bateman & Horn (1962). *Math. Comp.* 16(79), 363-367.
-2. Hardy & Littlewood (1923). *Acta Math.* 44, 1-70.
-3. Montgomery (1973). *Proc. Symp. Pure Math.* 24, 181-193.
-4. Odlyzko (1987). *Math. Comp.* 48(177), 273-308.
+MIT. See [LICENSE](LICENSE).

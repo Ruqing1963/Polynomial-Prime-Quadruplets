@@ -1,0 +1,185 @@
+{
+ "files": {
+  "Data_n_1_to_300M/n_100k_to_200k.txt": {
+   "lines": 1574,
+   "min": 100123,
+   "max": 199865,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_100M_to_300M.txt": {
+   "lines": 1970437,
+   "min": 100000354,
+   "max": 299999854,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_10M_to_50M.txt": {
+   "lines": 440078,
+   "min": 10000128,
+   "max": 49999987,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_1M_to_2M.txt": {
+   "lines": 13227,
+   "min": 1000161,
+   "max": 1999958,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_1_to_5k.txt": {
+   "lines": 127,
+   "min": 13,
+   "max": 4997,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_200k_to_500k.txt": {
+   "lines": 4474,
+   "min": 200026,
+   "max": 499826,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_20k_to_100k.txt": {
+   "lines": 1403,
+   "min": 20011,
+   "max": 99864,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_2M_to_10M.txt": {
+   "lines": 97161,
+   "min": 2000072,
+   "max": 9999991,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_500k_to_1M.txt": {
+   "lines": 7105,
+   "min": 500066,
+   "max": 999970,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_50M_to_100M.txt": {
+   "lines": 518096,
+   "min": 50000047,
+   "max": 99999907,
+   "already_seen": 0
+  },
+  "Data_n_1_to_300M/n_5k_to_20K.txt": {
+   "lines": 302,
+   "min": 5019,
+   "max": 19960,
+   "already_seen": 0
+  },
+  "Prime_Q47_1000M_1100M.txt": {
+   "lines": 905895,
+   "min": 1000000023,
+   "max": 1099999906,
+   "already_seen": 0
+  },
+  "Prime_Q47_1100M_1200M.txt": {
+   "lines": 900445,
+   "min": 1100000056,
+   "max": 1199999986,
+   "already_seen": 0
+  },
+  "Prime_Q47_1200M_1300M.txt": {
+   "lines": 897801,
+   "min": 1200000068,
+   "max": 1299999956,
+   "already_seen": 0
+  },
+  "Prime_Q47_1300M_1400M.txt": {
+   "lines": 895323,
+   "min": 1300000115,
+   "max": 1399999986,
+   "already_seen": 0
+  },
+  "Prime_Q47_1400M_1500M.txt": {
+   "lines": 891933,
+   "min": 1400000031,
+   "max": 1499999920,
+   "already_seen": 0
+  },
+  "Prime_Q47_1500M_1600M.txt": {
+   "lines": 887765,
+   "min": 1500000016,
+   "max": 1599999773,
+   "already_seen": 0
+  },
+  "Prime_Q47_1600M_1700M.txt": {
+   "lines": 886598,
+   "min": 1600000028,
+   "max": 1699999742,
+   "already_seen": 0
+  },
+  "Prime_Q47_1700M_1800M.txt": {
+   "lines": 882194,
+   "min": 1700000167,
+   "max": 1799999745,
+   "already_seen": 0
+  },
+  "Prime_Q47_1800M_1900M.txt": {
+   "lines": 881669,
+   "min": 1800000253,
+   "max": 1899999896,
+   "already_seen": 0
+  },
+  "Prime_Q47_1900M_2000M.txt": {
+   "lines": 880655,
+   "min": 1900000135,
+   "max": 1999999988,
+   "already_seen": 0
+  },
+  "Prime_Q47_300M_400M.txt": {
+   "lines": 956973,
+   "min": 300000030,
+   "max": 399999685,
+   "already_seen": 0
+  },
+  "Prime_Q47_400M_500M.txt": {
+   "lines": 942860,
+   "min": 400000067,
+   "max": 499999998,
+   "already_seen": 0
+  },
+  "Prime_Q47_500M_600M.txt": {
+   "lines": 935275,
+   "min": 500000000,
+   "max": 599999787,
+   "already_seen": 0
+  },
+  "Prime_Q47_600M_700M.txt": {
+   "lines": 927944,
+   "min": 600000131,
+   "max": 699999943,
+   "already_seen": 0
+  },
+  "Prime_Q47_700M_800M.txt": {
+   "lines": 920055,
+   "min": 700000000,
+   "max": 799999899,
+   "already_seen": 0
+  },
+  "Prime_Q47_800M_900M.txt": {
+   "lines": 915554,
+   "min": 800000333,
+   "max": 899999929,
+   "already_seen": 0
+  },
+  "Prime_Q47_900M_1000M.txt": {
+   "lines": 910648,
+   "min": 900000093,
+   "max": 999999986,
+   "already_seen": 0
+  }
+ },
+ "lines_total": 18473571,
+ "distinct_primes": 18473571,
+ "doublets": 176894,
+ "triplets": 1779,
+ "quadruplets": 15,
+ "first_n": 13,
+ "last_n": 1999999988,
+ "gaps_over_3000": [
+  [
+   1399874854,
+   1399880001
+  ]
+ ]
+}

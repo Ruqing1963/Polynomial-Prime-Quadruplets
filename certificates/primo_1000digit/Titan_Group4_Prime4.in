@@ -1,0 +1,5 @@
+; PRIMO Input File
+; Titan Q47 4-Tuplet - Group 4, Prime 4
+
+[Candidate]
+N=(4797791281527982559539)^47-(4797791281527982559539-1)^47

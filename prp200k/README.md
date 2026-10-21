@@ -25,13 +25,20 @@ PFGW 4.1.7 (64-bit, build 20251229), GWNUM 31.4, Windows 11.
 | 7 | `pfgw64 -b7 -q"..."` | 7-PRP | 280.3 s |
 | 11 | `pfgw64 -b11 -q"..."` | 11-PRP | 320.7 s |
 
+Independent tests with GMP 6.3.0 through gmpy2 2.3.0:
+
+| Test | Script | Result | Time |
+|---|---|---|---|
+| Strong (Miller–Rabin) base 11 | `gmp_verify.py` | strong 11-PRP | 2,642 s |
+| BPSW (strong base 2 + strong Lucas–Selfridge) | `bpsw_verify.py` | BPSW-PRP | 21,839 s |
+
 PFGW input line:
 
 ```
 (586135293385*10^4336+1647)^47-(586135293385*10^4336+1647-1)^47
 ```
 
-Screenshots of the base 3, 5 and 7 runs are in `screenshots/`. `gmp_verify.py` prints the SHA-256 hash and runs an independent strong-PRP test (base 11) with GMP through gmpy2; it takes much longer than PFGW.
+Screenshots of the base 3, 5 and 7 runs are in `screenshots/`. `gmp_verify.py` prints the SHA-256 hash and runs the strong base-11 test. `bpsw_verify.py` runs the BPSW test. Both take much longer than PFGW. Reproducing the PFGW check takes about 5 minutes on a current desktop.
 
 ## Search
 
@@ -61,4 +68,4 @@ python q47.py export --state q47.npz --split 8 --outdir pfgw_run
 python q47.py selftest
 ```
 
-See Section 7 of `paper/Q47_paper_v2.pdf` (DOI [10.5281/zenodo.23517573](https://doi.org/10.5281/zenodo.23517573)).
+See the 200,000-digit section of `paper/Q47_paper_v2.pdf` (DOI [10.5281/zenodo.23517573](https://doi.org/10.5281/zenodo.23517573)).
